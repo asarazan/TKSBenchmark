@@ -33,47 +33,51 @@ static inline void nothing(id obj)
 
 - (void)run;
 {
-    CueTaskQueue *readQueue = [[CueTaskQueue alloc] initWithName:@"Benchmark-Read"];
     CueTaskQueue *writeQueue = [[CueTaskQueue alloc] initWithName:@"Benchmark-Write"];
         
     for (int i = 0; i < 100; ++i) {
         [_dictionary setObject:@([[NSDate date] timeIntervalSince1970]) forKey:@(i)];
     }
     
+    NSMutableArray *queues = [@[] mutableCopy];
+    
     volatile __block int64_t readsCompleted = 0;
     volatile __block int64_t writesCompleted = 0;
     
     _startTime = [[NSDate date] timeIntervalSince1970];
-    if (_readThreads) {
+    for (int i = 0; i < _readThreads; ++i) {
+        CueTaskQueue *readQueue = [[CueTaskQueue alloc] initWithName:@"Benchmark-Read"];
+        [queues addObject:readQueue];
         CueBlockTask *task = [CueBlockTask taskWithKey:@0 priority:1.0 executionBlock:^(CueTask *task) {
-            for (int i = 0; i < _iterations; ++i) {
+            int count = _iterations / _readThreads;
+            for (int i = 0; i < count; ++i) {
                 id key = @(arc4random() % 100);
                 id obj = [_dictionary objectForKey:key];
                 nothing(obj);
                 OSAtomicIncrement64(&readsCompleted);
-            }
+            }            
         }];
         [readQueue addTask:task];
+        [readQueue startWithThreadCount:1];
     }
-    if (_writeThreads) {
+    
+    for (int i = 0; i < _writeThreads; ++i) {
+        CueTaskQueue *writeQueue = [[CueTaskQueue alloc] initWithName:@"Benchmark-Write"];
+        [queues addObject:writeQueue];
         CueBlockTask *task = [CueBlockTask taskWithKey:@0 priority:1.0 executionBlock:^(CueTask *task) {
-            for (int i = 0; i < _iterations; ++i) {
+            int count = _iterations / _writeThreads;
+            for (int i = 0; i < count; ++i) {
                 id key = @(arc4random() % 100);
                 [_dictionary setObject:@([[NSDate date] timeIntervalSince1970]) forKey:key];
                 OSAtomicIncrement64(&writesCompleted);
             }
         }];
         [writeQueue addTask:task];
+        [writeQueue startWithThreadCount:1];
     }
     
-    if (_readThreads) {
-        [readQueue startWithThreadCount:_readThreads];
-        [readQueue finish];
-    }
-    
-    if (_writeThreads) {
-        [writeQueue startWithThreadCount:_writeThreads];
-        [writeQueue finish];        
+    for (id queue in queues) {
+        [queue finish];
     }
     
     NSAssert(!_readThreads || readsCompleted == _iterations, @"Didn't complete all read iterations");
