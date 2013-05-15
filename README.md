@@ -11,25 +11,25 @@ The scientific method is in short supply here, so if you'd like to see different
 _presented without comment or analysis_
 
 ### 4 readers, 0 writers
-* [4R:0W] CueSyncDictionary Finished 5000000 reads and 0 writes in 7.464663 seconds
-* [4R:0W] DispatchDictionary Finished 5000000 reads and 0 writes in 11.290138 seconds
-* [4R:0W] CueSyncDictionary Finished 5000000 reads and 0 writes in 7.332433 seconds
-* [4R:0W] DispatchDictionary Finished 5000000 reads and 0 writes in 9.980433 seconds
+* [4R:0W] CueSyncDictionary Finished 800000 reads and 0 writes in 4.066146 seconds
+* [4R:0W] DispatchDictionary Finished 800000 reads and 0 writes in 3.639828 seconds
+* [4R:0W] CueSyncDictionary Finished 800000 reads and 0 writes in 4.229840 seconds
+* [4R:0W] DispatchDictionary Finished 800000 reads and 0 writes in 3.682911 seconds
 
 ### 0 readers, 4 writers
-* [0R:4W] CueSyncDictionary Finished 0 reads and 5000000 writes in 15.366588 seconds
-* [0R:4W] DispatchDictionary Finished 0 reads and 5000000 writes in 17.695334 seconds
-* [0R:4W] CueSyncDictionary Finished 0 reads and 5000000 writes in 15.507622 seconds
-* [0R:4W] DispatchDictionary Finished 0 reads and 5000000 writes in 17.678778 seconds
+* [0R:4W] CueSyncDictionary Finished 0 reads and 800000 writes in 5.477869 seconds
+* [0R:4W] DispatchDictionary Finished 0 reads and 800000 writes in 5.125106 seconds
+* [0R:4W] CueSyncDictionary Finished 0 reads and 800000 writes in 5.146630 seconds
+* [0R:4W] DispatchDictionary Finished 0 reads and 800000 writes in 4.995340 seconds
 
 ### 2 readers, 2 writers
-* [2R:2W] CueSyncDictionary Finished 2500000 reads and 2500000 writes in 8.861671 seconds
-* [2R:2W] DispatchDictionary Finished 2500000 reads and 2500000 writes in 9.735245 seconds
-* [2R:2W] CueSyncDictionary Finished 2500000 reads and 2500000 writes in 8.145304 seconds
-* [2R:2W] DispatchDictionary Finished 2500000 reads and 2500000 writes in 11.332466 seconds
+* [2R:2W] CueSyncDictionary Finished 400000 reads and 400000 writes in 4.421995 seconds
+* [2R:2W] DispatchDictionary Finished 400000 reads and 400000 writes in 4.162217 seconds
+* [2R:2W] CueSyncDictionary Finished 400000 reads and 400000 writes in 4.473137 seconds
+* [2R:2W] DispatchDictionary Finished 400000 reads and 400000 writes in 4.222003 seconds
 
 ### 2 readers, 1 writer
-* [2R:1W] CueSyncDictionary Finished 2500000 reads and 2500000 writes in 7.464192 seconds
-* [2R:1W] DispatchDictionary Finished 2500000 reads and 2500000 writes in 9.334130 seconds
-* [2R:1W] CueSyncDictionary Finished 2500000 reads and 2500000 writes in 7.958390 seconds
-* [2R:1W] DispatchDictionary Finished 2500000 reads and 2500000 writes in 10.082576 seconds
+* [2R:1W] CueSyncDictionary Finished 400000 reads and 400000 writes in 3.867335 seconds
+* [2R:1W] DispatchDictionary Finished 400000 reads and 400000 writes in 3.809772 seconds
+* [2R:1W] CueSyncDictionary Finished 400000 reads and 400000 writes in 3.715670 seconds
+* [2R:1W] DispatchDictionary Finished 400000 reads and 400000 writes in 3.511200 seconds
