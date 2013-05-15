@@ -11,9 +11,9 @@
 #import "Benchmark.h"
 #import "DispatchDictionary.h"
 
-static NSUInteger iterations = 800000;
-static NSUInteger readThreads = 4;
-static NSUInteger writeThreads = 0;
+static NSUInteger iterations = 800000 / 2;
+static NSUInteger readThreads = 2;
+static NSUInteger writeThreads = 1;
 
 @implementation AppDelegate
 

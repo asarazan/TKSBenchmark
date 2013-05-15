@@ -32,9 +32,7 @@ static inline void nothing(id obj)
 }
 
 - (void)run;
-{
-    CueTaskQueue *writeQueue = [[CueTaskQueue alloc] initWithName:@"Benchmark-Write"];
-        
+{        
     for (int i = 0; i < 100; ++i) {
         [_dictionary setObject:@([[NSDate date] timeIntervalSince1970]) forKey:@(i)];
     }
