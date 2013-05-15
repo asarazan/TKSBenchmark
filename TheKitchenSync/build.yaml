@@ -1,0 +1,13 @@
+default: deps
+targets:
+  deps:
+    type: base.DepsOnly
+    deps: []
+    args:
+      test:
+      - :TheKitchenSync
+    precommit: true
+  TheKitchenSync:
+    type: xcode.IOS
+    args:
+      suite: TheKitchenSyncTests
