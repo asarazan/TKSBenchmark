@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         _dictionary = [@{} mutableCopy];
-        _queue = dispatch_queue_create("DispatchDictionary", NULL);
+        _queue = dispatch_queue_create("DispatchDictionary", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
