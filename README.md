@@ -1,7 +1,8 @@
 TKSBenchmark
 ============
 
-A quick and dirty benchmark of mutex-based sync dictionaries vs dispatch-driven ones.
+A quick and dirty benchmark of mutex-based sync dictionaries vs dispatch-driven ones. 
+The scientific method is in short supply here, so if you'd like to see different/better metrics, pull request!
 
 * **CueSyncDictionary**: NSMutableDictionary + std::mutex
 * **DispatchDictionary**: NSMutableDictionary + dispatch queue (with barrier for setObject:forKey:)
