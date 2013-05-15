@@ -359,6 +359,7 @@
 				902C1ADD17433A0900D97586 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

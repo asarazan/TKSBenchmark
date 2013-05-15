@@ -11,9 +11,9 @@
 #import "Benchmark.h"
 #import "DispatchDictionary.h"
 
-static NSUInteger iterations = 5000;
-static NSUInteger readThreads = 4;
-static NSUInteger writeThreads = 0;
+static NSUInteger iterations = 5000000 / 2;
+static NSUInteger readThreads = 2;
+static NSUInteger writeThreads = 1;
 
 @implementation AppDelegate
 
@@ -29,33 +29,37 @@ static NSUInteger writeThreads = 0;
     return YES;
 }
 
-- (void)_testLock:(void (^)())onFinish;
+- (void)_testLock;
 {
     Benchmark *b = [[Benchmark alloc] init];
     b.dictionary = [@{} cueConcurrent];
     b.readThreads = readThreads;
     b.writeThreads = writeThreads;
     b.iterations = iterations;
-    b.onFinish = onFinish;
     [b run];    
 }
 
-- (void)_testDispatch:(void (^)())onFinish;
+- (void)_testDispatch;
 {
     Benchmark *b = [[Benchmark alloc] init];
     b.dictionary = [[DispatchDictionary alloc] init];
     b.readThreads = readThreads;
     b.writeThreads = writeThreads;
     b.iterations = iterations;
-    b.onFinish = onFinish;
     [b run];
 }
 
 - (void)_test;
 {
-    [self _testLock:^{
-        [self cuePerformSelectorOnMainThread:@selector(_testDispatch:) withObject:nil afterDelay:1.0f];
-    }];
+    bool testLock = true;
+    while (1) {
+        if (testLock) {
+            [self _testLock];
+        } else {
+            [self _testDispatch];
+        }
+        testLock = !testLock;
+    }
 }
 
 @end

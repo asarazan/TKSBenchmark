@@ -39,4 +39,9 @@
     return retval;
 }
 
+- (NSString *)description;
+{
+    return _dictionary.description;
+}
+
 @end

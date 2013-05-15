@@ -18,8 +18,6 @@
 
 @property NSUInteger iterations;
 
-@property (copy) void (^onFinish)(void);
-
 - (void)run;
 
 @end
